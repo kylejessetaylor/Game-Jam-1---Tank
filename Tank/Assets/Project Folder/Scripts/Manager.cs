@@ -51,7 +51,7 @@ void Start()
     }
 
     #region SpawnerFunctions
-    private float SpawnerStart()
+    private void SpawnerStart()
     {
         //Sets first cycleSpawnTime
         cycleSpawnTime = FloatTime();
