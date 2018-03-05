@@ -10,7 +10,23 @@ public class CanonRot : MonoBehaviour
     public  float rotSpeed = 50.0f;
     public Rigidbody shell;
     public Transform fireTransform;
+    public float turretHeight;
+
+
     public float launchForce = 10.0f;
+
+    public float bulletSpeed
+    {
+        get
+        {
+            return this.launchForce;
+        }
+        set
+        {
+            this.launchForce = value;
+        }
+    }
+
     private bool fired;
     public float time;
 
@@ -41,7 +57,7 @@ public class CanonRot : MonoBehaviour
             }
         }
 
-        this.transform.position = movPos.transform.position + new Vector3(0, 1.5f, 0);
+        this.transform.position = movPos.transform.position + new Vector3(0, turretHeight, 0);
 
     }
 

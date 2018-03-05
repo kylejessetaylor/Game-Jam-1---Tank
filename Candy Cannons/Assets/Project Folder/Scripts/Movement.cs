@@ -71,16 +71,16 @@ public class Movement : MonoBehaviour
        
         if (XCI.GetAxisRaw(XboxAxis.RightStickX, controller) > 0)
         {
-            GetComponent<Rigidbody>().MoveRotation(GetComponent<Rigidbody>().rotation * rotationPos);
+            rigidbodys.MoveRotation(rigidbodys.rotation * rotationPos);
         }
         if (XCI.GetAxisRaw(XboxAxis.RightStickX, controller) < 0)
         {
-            GetComponent<Rigidbody>().MoveRotation(GetComponent<Rigidbody>().rotation * rotationNeg);
+            rigidbodys.MoveRotation(rigidbodys.rotation * rotationNeg);
         }
 
         if (GetComponent<Rigidbody>().velocity.magnitude > maxSpeed)
         {
-            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * maxSpeed;
+           rigidbodys.velocity = rigidbodys.velocity.normalized * maxSpeed;
 
         }
 
