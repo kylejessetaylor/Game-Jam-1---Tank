@@ -5,7 +5,7 @@ using XboxCtrlrInput;
 public class CanonRot : MonoBehaviour
 {
 
-    public Rigidbody rigidbodys;
+    private Rigidbody rigidbodys;
     public XboxController controller;
     public  float rotSpeed = 50.0f;
     public Rigidbody shell;
