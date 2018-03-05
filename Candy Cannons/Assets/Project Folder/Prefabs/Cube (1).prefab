@@ -224,11 +224,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aac487637c74b7a41b5523099ef4cc8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbodys: {fileID: 0}
   controller: 0
   rotSpeed: 50
   shell: {fileID: 54836240489041484, guid: 05a2dec5af83e6647864f6dab6641ccd, type: 2}
   fireTransform: {fileID: 4962053331729802}
+  turretHeight: 0
   launchForce: 10
   time: 0
-  movPos: {fileID: 0}
+  movPos: {fileID: 1815868787874964, guid: aedfd08e9fc387444bbddd7559120f6c, type: 2}

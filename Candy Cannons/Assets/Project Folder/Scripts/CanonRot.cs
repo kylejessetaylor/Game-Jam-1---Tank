@@ -8,10 +8,10 @@ public class CanonRot : MonoBehaviour
     private Rigidbody rigidbodys;
     public XboxController controller;
     public  float rotSpeed = 50.0f;
-    public Rigidbody shell;
+    public GameObject shell;
     public Transform fireTransform;
     public float turretHeight;
-
+    public List<GameObject> Shells;
 
     public float launchForce = 10.0f;
 
@@ -27,7 +27,7 @@ public class CanonRot : MonoBehaviour
         }
     }
 
-    private bool fired;
+    private bool fired = false;
     public float time;
 
     public GameObject movPos;
@@ -35,6 +35,8 @@ public class CanonRot : MonoBehaviour
     // Use this for initialization
     void Awake ()
     {
+        Shells = new List<GameObject>();
+
         rigidbodys = GetComponent<Rigidbody>();
     }
 
@@ -64,6 +66,7 @@ public class CanonRot : MonoBehaviour
     void FixedUpdate()
     {
         float turn = rotSpeed * Time.deltaTime;
+
         Quaternion rotationPos = Quaternion.Euler(0, turn, 0);
         Quaternion rotationNeg = Quaternion.Euler(0, -turn, 0);
 
@@ -81,9 +84,9 @@ public class CanonRot : MonoBehaviour
     private void ShootBullet()
     {
         fired = true;
-        Rigidbody shellInstance = Instantiate(shell, fireTransform.position, fireTransform.rotation) as Rigidbody;
+        GameObject shellInstance = Instantiate(shell, fireTransform.position, fireTransform.rotation) as GameObject;
 
-        shellInstance.velocity = launchForce * fireTransform.forward;
+        shellInstance.GetComponent<Rigidbody>().velocity += launchForce * fireTransform.forward * Time.deltaTime * 10;
     }
 
     public bool rightTiggerDown()
