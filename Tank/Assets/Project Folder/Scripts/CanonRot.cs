@@ -7,8 +7,14 @@ public class CanonRot : MonoBehaviour
 
     public Rigidbody rigidbodys;
     public XboxController controller;
-    float rotSpeed = 50.0f;
+    public  float rotSpeed = 50.0f;
+    public Rigidbody shell;
+    public Transform fireTransform;
+    public float launchForce = 10.0f;
+    private bool fired;
+    public float time;
 
+    public GameObject movPos;
 
     // Use this for initialization
     void Awake ()
@@ -17,10 +23,31 @@ public class CanonRot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate ()
+    void Update()
+    {
+        rigidbodys.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionY;
+        time += Time.deltaTime;
+        if(time >= 1)
+        {
+            if (rightTiggerDown())
+            {
+                ShootBullet();
+
+                time = 0;
+            }
+            else
+            {
+                fired = false;
+            }
+        }
+
+        this.transform.position = movPos.transform.position + new Vector3(0, 1.5f, 0);
+
+    }
+
+    void FixedUpdate()
     {
         float turn = rotSpeed * Time.deltaTime;
-
         Quaternion rotationPos = Quaternion.Euler(0, turn, 0);
         Quaternion rotationNeg = Quaternion.Euler(0, -turn, 0);
 
@@ -31,6 +58,27 @@ public class CanonRot : MonoBehaviour
         if (XCI.GetAxisRaw(XboxAxis.RightStickX, controller) < 0)
         {
             rigidbodys.MoveRotation(rigidbodys.rotation * rotationNeg);
+        }
+    }
+
+
+    private void ShootBullet()
+    {
+        fired = true;
+        Rigidbody shellInstance = Instantiate(shell, fireTransform.position, fireTransform.rotation) as Rigidbody;
+
+        shellInstance.velocity = launchForce * fireTransform.forward;
+    }
+
+    public bool rightTiggerDown()
+    {
+        if (XCI.GetAxisRaw(XboxAxis.RightTrigger, controller) != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }

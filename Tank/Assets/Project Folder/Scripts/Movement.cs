@@ -5,11 +5,9 @@ using XboxCtrlrInput;
 public class Movement : MonoBehaviour
 {
 
-    private const float accelration = 1.0f;
-    private const float friction = 1.0f;
-    float velocity = 0;
-    float maxSpeed = 10.0f;
-    float rotSpeed = 50.0f;
+    public float velocity = 0;
+    public float maxSpeed = 10.0f;
+    public float rotSpeed = 50.0f;
 
     private Rigidbody rigidbody;
     public XboxController controller;
@@ -56,10 +54,7 @@ public class Movement : MonoBehaviour
         else
         {
             velocity = 0;
-            if (velocity == 0)
-            {
-                this.rigidbody.velocity = Vector3.zero;
-            }
+
         }
 
         if(leftTiggerDown() == true)
@@ -71,7 +66,7 @@ public class Movement : MonoBehaviour
         else
         {
             velocity = 0;
-            
+   
         }
        
         if (XCI.GetAxisRaw(XboxAxis.RightStickX, controller) > 0)
