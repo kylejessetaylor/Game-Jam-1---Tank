@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 5e4127a76a2a3bd4bb4d72d5be374c52
+timeCreated: 1520223906
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: d puntillas B to tiptoe
+  fontNames:
+  - d puntillas B to tiptoe
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
