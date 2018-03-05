@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
-
     [Header("Spawner")]
+    #region SpawnerVariables
     //Time till first spawn
     public float firstSpawn;
     //Time between spawning
@@ -25,21 +25,38 @@ public class Manager : MonoBehaviour
     //Records last power up that spawned
     private int lastPowerUp;
 
+    #endregion
 
-    // Use this for initialization
-    void Start()
+    [Header("MenuInterface")]
+    #region MenuVariables
+    //Main Menu "Scene"
+    public GameObject mainMenu;
+    //Game "Scene"
+    public GameObject GameScene;
+
+
+    #endregion
+
+// Use this for initialization
+void Start()
     {
-        //Sets first cycleSpawnTime
-        cycleSpawnTime = FloatTime();
-
-        //Spawner for Power Ups
-        InvokeRepeating("SpawnPowerUp", firstSpawn, cycleSpawnTime);
+        //Sets Invoke Repeating
+        SpawnerStart();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    #region SpawnerFunctions
+    private float SpawnerStart()
+    {
+        //Sets first cycleSpawnTime
+        cycleSpawnTime = FloatTime();
+        //Spawner for Power Ups
+        InvokeRepeating("SpawnPowerUp", firstSpawn, cycleSpawnTime);
     }
 
     public void SpawnPowerUp()
@@ -80,4 +97,6 @@ public class Manager : MonoBehaviour
         float newTime = Random.Range(cycleTime1, cycleTime2);
         return (newTime);
     }
+    #endregion
+
 }
