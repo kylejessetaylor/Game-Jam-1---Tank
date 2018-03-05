@@ -9,12 +9,12 @@ public class Movement : MonoBehaviour
     public float maxSpeed = 10.0f;
     public float rotSpeed = 50.0f;
 
-    private Rigidbody rigidbody;
+    private Rigidbody rigidbodys;
     public XboxController controller;
     // Use this for initialization
     void Awake ()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rigidbodys = GetComponent<Rigidbody>();
 
     }
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class Movement : MonoBehaviour
         if (rightTiggerDown()== true)
         {
             velocity = 5;
-            rigidbody.velocity += moveForward * velocity * Time.deltaTime * 10;         
+            GetComponent<Rigidbody>().velocity += moveForward * velocity * Time.deltaTime * 10;         
         }
         else
         {
@@ -61,7 +61,7 @@ public class Movement : MonoBehaviour
         {
             velocity = 5;
 
-            rigidbody.velocity += moveBack * velocity * Time.deltaTime * 10;
+            GetComponent<Rigidbody>().velocity += moveBack * velocity * Time.deltaTime * 10;
         }
         else
         {
@@ -71,16 +71,16 @@ public class Movement : MonoBehaviour
        
         if (XCI.GetAxisRaw(XboxAxis.RightStickX, controller) > 0)
         {
-            rigidbody.MoveRotation(rigidbody.rotation * rotationPos);
+            GetComponent<Rigidbody>().MoveRotation(GetComponent<Rigidbody>().rotation * rotationPos);
         }
         if (XCI.GetAxisRaw(XboxAxis.RightStickX, controller) < 0)
         {
-            rigidbody.MoveRotation(rigidbody.rotation * rotationNeg);
+            GetComponent<Rigidbody>().MoveRotation(GetComponent<Rigidbody>().rotation * rotationNeg);
         }
 
-        if (rigidbody.velocity.magnitude > maxSpeed)
+        if (GetComponent<Rigidbody>().velocity.magnitude > maxSpeed)
         {
-            rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
+            GetComponent<Rigidbody>().velocity = GetComponent<Rigidbody>().velocity.normalized * maxSpeed;
 
         }
 
