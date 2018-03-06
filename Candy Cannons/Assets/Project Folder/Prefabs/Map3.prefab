@@ -10405,6 +10405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc4ca9a14d998945986ee384fbdc199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 0}
   velocity: 0
   maxSpeed: 5
   rotSpeed: 225
@@ -10441,6 +10442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fc4ca9a14d998945986ee384fbdc199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  deathSound: {fileID: 0}
   velocity: 0
   maxSpeed: 5
   rotSpeed: 225

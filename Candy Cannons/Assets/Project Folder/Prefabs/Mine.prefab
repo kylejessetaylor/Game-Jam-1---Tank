@@ -126,8 +126,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 418d28040dd7be64f94c3caf7dca8c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mineExplosion: {fileID: 8300000, guid: c0c30e642deb25b4bb8de39ae2d1d11b, type: 3}
   projectile: {fileID: 1339096801820676}
-  explosionDelay: 0.5
+  explosionDelay: 0.2
   referenceMaterial: {fileID: 2100000, guid: ed04abf058d80844286a23f98f6d9256, type: 2}
   mineFadeTime: 5
   startFadeDelay: 0.5

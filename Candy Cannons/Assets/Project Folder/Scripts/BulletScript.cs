@@ -33,6 +33,9 @@ public class BulletScript : MonoBehaviour
     {
         isDead = false;
         player = GameObject.FindGameObjectWithTag("Player");
+		AudioSource.PlayClipAtPoint (bounceSound, transform.position);
+
+
     }
 
     // Update is called once per frame
@@ -48,6 +51,9 @@ public class BulletScript : MonoBehaviour
             Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
             float rot = 90 - Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, rot, 0);
+
+			//Bounce Sound
+			AudioSource.PlayClipAtPoint (bounceSound, transform.position);
         }
     }
 
@@ -62,19 +68,21 @@ public class BulletScript : MonoBehaviour
 
             Destroy(collision.gameObject);
             //Made by Kyle. To destroy bullet
-            Destroy(this.gameObject);
+			AudioSource.PlayClipAtPoint(deathSound, transform.position);
+			gameObject.SetActive(false);
         }
     }
 
     void OnEnable()
     {
         Invoke("Destroy", shellDespawnTime);
+
     }
 
     void Destroy()
     {
         //Audio
-        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+//        AudioSource.PlayClipAtPoint(deathSound, transform.position);
 
         gameObject.SetActive(false);
     }

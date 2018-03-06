@@ -30,7 +30,7 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tank1.GetComponent<IsHitScript>().IsHit || tank2.GetComponent<IsHitScript>().IsHit)
+        if (tank1.GetComponent<IsHitScript>().IsHit == true || tank2.GetComponent<IsHitScript>().IsHit ==)
         {
             if (tank1.GetComponent<IsHitScript>().IsHit)
             {
