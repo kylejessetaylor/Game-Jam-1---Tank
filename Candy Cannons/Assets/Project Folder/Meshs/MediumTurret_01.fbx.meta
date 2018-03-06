@@ -1,23 +1,18 @@
 fileFormatVersion: 2
-guid: f013b1d01fc82ef43af3e652aa3c8360
-timeCreated: 1520303102
+guid: 0721cce3f7572ec4abd918aee8774806
+timeCreated: 1520306713
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Body
+    100000: Medium_Turret_Base
     100002: //RootNode
-    100004: Treads
-    400000: Body
+    400000: Medium_Turret_Base
     400002: //RootNode
-    400004: Treads
     2100000: lambert1
-    2300000: Body
-    2300002: Treads
-    3300000: Body
-    3300002: Treads
-    4300000: Body
-    4300002: Treads
+    2300000: Medium_Turret_Base
+    3300000: Medium_Turret_Base
+    4300000: Medium_Turret_Base
     9500000: //RootNode
   externalObjects: {}
   materials:

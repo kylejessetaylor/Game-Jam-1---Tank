@@ -1,18 +1,16 @@
 fileFormatVersion: 2
-guid: 0073688ee9d2e2c489f7b4d7cf2e96c0
-timeCreated: 1520303102
+guid: c234871b5f67a7c4182993dc0c0c34da
+timeCreated: 1520306714
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Medium_Turret_Base
-    100002: //RootNode
-    400000: Medium_Turret_Base
-    400002: //RootNode
+    100000: //RootNode
+    400000: //RootNode
     2100000: lambert1
-    2300000: Medium_Turret_Base
-    3300000: Medium_Turret_Base
-    4300000: Medium_Turret_Base
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: LightTurret1_Light_Turret_Base
     9500000: //RootNode
   externalObjects: {}
   materials:

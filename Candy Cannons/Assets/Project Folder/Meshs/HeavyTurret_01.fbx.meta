@@ -1,28 +1,16 @@
 fileFormatVersion: 2
-guid: 311a9ffd53de17345983e2d8a179e900
-timeCreated: 1520303102
+guid: f28b49f518aa1604eb297a7c5217ffc7
+timeCreated: 1520306714
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Cherry
-    100002: Cream
-    100004: Heavy_Turret_Base
-    100006: //RootNode
-    400000: Cherry
-    400002: Cream
-    400004: Heavy_Turret_Base
-    400006: //RootNode
+    100000: //RootNode
+    400000: //RootNode
     2100000: lambert1
-    2300000: Cherry
-    2300002: Cream
-    2300004: Heavy_Turret_Base
-    3300000: Cherry
-    3300002: Cream
-    3300004: Heavy_Turret_Base
-    4300000: Cream
-    4300002: Cherry
-    4300004: Heavy_Turret_Base
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: HeavyTurret1_Cream
     9500000: //RootNode
   externalObjects: {}
   materials:

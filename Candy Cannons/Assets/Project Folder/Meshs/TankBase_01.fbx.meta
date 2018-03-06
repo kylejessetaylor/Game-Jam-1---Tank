@@ -1,23 +1,27 @@
 fileFormatVersion: 2
-guid: 5f5a991228b06bb4586c7a209194b4a8
-timeCreated: 1520303102
+guid: 35adac9ff75d5ec4ba25a0ea4c53d52c
+timeCreated: 1520306713
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: Light_Turret
-    100002: Light_Turret_Base
+    100000: Body
+    100002: Body1
     100004: //RootNode
-    400000: Light_Turret
-    400002: Light_Turret_Base
+    100006: transform1
+    100008: transform2
+    100010: Treads
+    400000: Body
+    400002: Body1
     400004: //RootNode
-    2100000: lambert1
-    2300000: Light_Turret
-    2300002: Light_Turret_Base
-    3300000: Light_Turret
-    3300002: Light_Turret_Base
-    4300000: Light_Turret_Base
-    4300002: Light_Turret
+    400006: transform1
+    400008: transform2
+    400010: Treads
+    2100000: StingrayPBS1
+    2100002: StingrayPBS2
+    2300000: Body1
+    3300000: Body1
+    4300000: Body1
     9500000: //RootNode
   externalObjects: {}
   materials:

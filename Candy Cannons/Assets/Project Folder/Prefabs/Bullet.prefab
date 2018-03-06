@@ -127,7 +127,8 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  CanonRot: {fileID: 1838285532331596, guid: 6eef567aa2297134d9b43655ab33b0db, type: 2}
+  CanonRotation: {fileID: 1053460152753128, guid: 5484c0a223b78084789d22b3a61ef90b,
+    type: 2}
   bullet: {fileID: 4558953287608942}
 --- !u!135 &135065607214236154
 SphereCollider:
