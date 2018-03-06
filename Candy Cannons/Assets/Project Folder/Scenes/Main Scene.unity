@@ -597,18 +597,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 1705151610855390, guid: eb88f8d4bce95d247a8eeec8676d8add, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1045678421235588, guid: eb88f8d4bce95d247a8eeec8676d8add, type: 2}
-      propertyPath: m_Name
-      value: PlayerTank2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1665355601576032, guid: eb88f8d4bce95d247a8eeec8676d8add, type: 2}
-      propertyPath: m_Name
-      value: PlayerTank1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb88f8d4bce95d247a8eeec8676d8add, type: 2}
   m_IsPrefabParent: 0

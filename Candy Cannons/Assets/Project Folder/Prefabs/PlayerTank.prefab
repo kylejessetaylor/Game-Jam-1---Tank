@@ -495,7 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: 0
-  rotSpeed: 150
+  rotSpeed: 225
   shell: {fileID: 1035204935346950, guid: 05a2dec5af83e6647864f6dab6641ccd, type: 2}
   fireTransform: {fileID: 4861047822909516}
   turretHeight: 0
