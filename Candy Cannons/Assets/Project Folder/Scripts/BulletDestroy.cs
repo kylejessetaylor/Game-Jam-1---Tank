@@ -11,7 +11,6 @@ public class BulletDestroy : MonoBehaviour {
         Invoke("Destroy", shellDespawnTime);
 	}
 	
-	// Update is called once per frame
 	void Destroy ()
     {
         gameObject.SetActive(false);
