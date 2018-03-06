@@ -11,10 +11,13 @@ public class CanonRot : MonoBehaviour
     public GameObject shell;
     public Transform fireTransform;
     public float turretHeight;
-    public List<GameObject> Shells;
-
+    private bool fired = false;
+    private float time;
+    public GameObject movPos;
+    private int amountOfBullets = 20;
+    public List<GameObject> shells;
     public float launchForce = 10.0f;
-
+    public float shellDelay;
     public float bulletSpeed
     {
         get
@@ -27,25 +30,33 @@ public class CanonRot : MonoBehaviour
         }
     }
 
-    private bool fired = false;
-    public float time;
-
-    public GameObject movPos;
 
     // Use this for initialization
     void Awake ()
     {
-        Shells = new List<GameObject>();
+        shells = new List<GameObject>();
+
+        for (int i  = 0; i < amountOfBullets; i++)
+        {
+            GameObject shellInstance = Instantiate(shell, fireTransform.position, fireTransform.rotation);
+            shellInstance.GetComponent<Rigidbody>().velocity += launchForce * fireTransform.forward * Time.deltaTime * 10;
+            shellInstance.SetActive(false);
+            shells.Add(shellInstance);
+        }
 
         rigidbodys = GetComponent<Rigidbody>();
+
+
     }
+
+
 
     // Update is called once per frame
     void Update()
     {
-        rigidbodys.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionY;
+        rigidbodys.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationY;
         time += Time.deltaTime;
-        if(time >= 1)
+        if(time >= shellDelay)
         {
             if (rightTiggerDown())
             {
@@ -80,13 +91,24 @@ public class CanonRot : MonoBehaviour
         }
     }
 
-
     private void ShootBullet()
     {
         fired = true;
-        GameObject shellInstance = Instantiate(shell, fireTransform.position, fireTransform.rotation) as GameObject;
 
-        shellInstance.GetComponent<Rigidbody>().velocity += launchForce * fireTransform.forward * Time.deltaTime * 10;
+        for (int i = 0; i < shells.Count; i++)
+        {
+            if(!shells[i].activeInHierarchy)
+            {
+                shells[i].transform.position = transform.position;
+                shells[i].transform.rotation = transform.rotation;
+                shells[i].SetActive(true);
+                break;
+            }
+        }
+
+       // GameObject shellInstance = Instantiate(shell, fireTransform.position, fireTransform.rotation);
+
+       // shellInstance.GetComponent<Rigidbody>().velocity += launchForce * fireTransform.forward * Time.deltaTime * 10;
     }
 
     public bool rightTiggerDown()

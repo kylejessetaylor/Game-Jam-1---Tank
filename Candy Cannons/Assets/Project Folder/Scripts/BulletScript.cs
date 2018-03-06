@@ -7,7 +7,6 @@ public class BulletScript : MonoBehaviour
     public LayerMask collisionMask;
    [SerializeField] private GameObject CanonRot;
     public Transform bullet;
-    private float rotSpeed = 1;
     // Use this for initialization
     void Awake()
     {
