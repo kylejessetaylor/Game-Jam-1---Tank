@@ -49,7 +49,7 @@ public class Mine : MonoBehaviour {
             //Mine shows
             //StartCoroutine(FadeAfterTime(startFadeDelay));
             Color color = mat.color;
-            color.a += 255;
+            color.a = 1;
             mat.color = color;
             //Starts timer for explosion
             StartCoroutine(ExplodeAfterTime(explosionDelay+startFadeDelay, this.gameObject));
@@ -78,6 +78,12 @@ public class Mine : MonoBehaviour {
         projectile.transform.position = thisObject.transform.position;
         projectile.transform.parent = null;
         projectile.SetActive(true);
+
+        //"Destroys" Mine
+        Color color = mat.color;
+        color.a = 0;
+        mat.color = color;
+        GetComponent<Collider>().enabled = false;
     }
 
     //Fade Delay

@@ -51,13 +51,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e4df0d54cb08b74d99c6fc2144a2854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpFirstSpawn: 0
-  powerUpTimeMin: 0
-  powerUpTimeMax: 0
+  powerUpFirstSpawn: 10
+  powerUpTimeMin: 15
+  powerUpTimeMax: 20
   powerUpSpawnLocations: []
   powerUps: []
-  mineFirstSpawn: 0
-  mineTimeMin: 0
-  mineTimeMax: 0
+  mineFirstSpawn: 30
+  mineTimeMin: 10
+  mineTimeMax: 20
   mineSpawnLocations: []
   mine: {fileID: 0}

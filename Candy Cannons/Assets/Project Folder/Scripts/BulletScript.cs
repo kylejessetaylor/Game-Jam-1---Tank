@@ -8,13 +8,13 @@ public class BulletScript : MonoBehaviour
    [SerializeField] private GameObject CanonRotation;
     public Transform bullet;
     public GameObject player;
-    PlayerHP playerHP;
+    //PlayerHP playerHP;
     public int bulletDamage;
     public float shellDespawnTime;
     // Use this for initialization
     void Awake()
     {
-        playerHP = GetComponent<PlayerHP>();
+    //    playerHP = GetComponent<PlayerHP>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -39,10 +39,10 @@ public class BulletScript : MonoBehaviour
 
     void Attack()
     {
-        if (player.GetComponent<PlayerHP>().health > 0)
-        {
-            playerHP.TakeDamage(bulletDamage);
-        }
+     //   if (player.GetComponent<PlayerHP>().health > 0)
+     //   {
+     //       playerHP.TakeDamage(bulletDamage);
+     //  }
     }
 
     void OnEnable()
