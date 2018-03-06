@@ -6,15 +6,29 @@ public class BulletScript : MonoBehaviour
 {
     public LayerMask collisionMask;
    [SerializeField] private GameObject CanonRotation;
-    public Transform bullet;
     public GameObject player;
     //PlayerHP playerHP;
     public int bulletDamage;
     public float shellDespawnTime;
+
+    private bool isDead;
+
+    public bool IsDead
+    {
+        get
+        {
+            return isDead;
+        }
+        set
+        {
+            isDead = value;
+        }
+    }
+
     // Use this for initialization
     void Awake()
     {
-    //    playerHP = GetComponent<PlayerHP>();
+        isDead = false;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -32,17 +46,14 @@ public class BulletScript : MonoBehaviour
             float rot = 90 - Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg;
             transform.eulerAngles = new Vector3(0, rot, 0);
         }
-
-        Attack();
     }
 
-
-    void Attack()
+    private void OnCollisionEnter(Collision collision)
     {
-     //   if (player.GetComponent<PlayerHP>().health > 0)
-     //   {
-     //       playerHP.TakeDamage(bulletDamage);
-     //  }
+        if(collision.gameObject.tag == "Player")
+        {
+            Destroy(collision.gameObject);
+        }
     }
 
     void OnEnable()

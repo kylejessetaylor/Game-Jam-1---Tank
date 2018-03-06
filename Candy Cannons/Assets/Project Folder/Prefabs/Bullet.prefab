@@ -127,9 +127,11 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
-  CanonRotation: {fileID: 1053460152753128, guid: 5484c0a223b78084789d22b3a61ef90b,
+  CanonRotation: {fileID: 1677171756987460, guid: 58d6386299386504eb8a8e4dbcaad8c8,
     type: 2}
-  bullet: {fileID: 4558953287608942}
+  player: {fileID: 1490358657586236, guid: 58d6386299386504eb8a8e4dbcaad8c8, type: 2}
+  bulletDamage: 0
+  shellDespawnTime: 4
 --- !u!135 &135065607214236154
 SphereCollider:
   m_ObjectHideFlags: 1
