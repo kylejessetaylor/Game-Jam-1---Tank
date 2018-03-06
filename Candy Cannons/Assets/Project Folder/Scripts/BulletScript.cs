@@ -53,6 +53,8 @@ public class BulletScript : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             Destroy(collision.gameObject);
+            //Made by Kyle. To destroy bullet
+            Destroy(this.gameObject);
         }
     }
 

@@ -108,4 +108,14 @@ public class Movement : MonoBehaviour
             return false;
         }
     }
+
+    //By Kyle. Death by Mines
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.tag == "Projectile")
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
 }
