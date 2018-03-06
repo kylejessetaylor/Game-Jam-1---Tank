@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour
     private List<GameObject> mapObjList;
     private int currMapIndex;
     private UIManager uiManager;
-    BulletScript bulletScript;
+
 // Use this for initialization
     void Start()
     {
@@ -30,20 +30,29 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (tank1.IsDead || tank2.IsDead)
-        //{
-        //    Time.timeScale = 0;
+        if (tank1.GetComponent<IsHitScript>().IsHit || tank2.GetComponent<IsHitScript>().IsHit)
+        {
+            if (tank1.GetComponent<IsHitScript>().IsHit)
+            {
+                uiManager.Player2Score++;
+            }
 
-        //    if (tank1.IsDead)
-        //    {
-        //        uiManager.Player1Score++;
-        //    }
+            if (tank2.GetComponent<IsHitScript>().IsHit)
+            {
+                uiManager.Player1Score++;
+            }
 
-        //    if (tank2.IsDead)
-        //    {
-        //        uiManager.Player2Score++;
-        //    }
-        //}
+            uiManager.switchGameState(gameState.NEXT);
+        }
+    }
+
+    public void refreshStage()
+    {
+        mapObjList[currMapIndex].SetActive(false);
+        currMapIndex = Random.Range(0, mapObjList.Count-1);
+        mapObjList[currMapIndex].SetActive(true);
+        tank1 = GameObject.Find("PlayerTank1");
+        tank2 = GameObject.Find("PlayerTank2");
     }
 
     public int CurrMapIndex

@@ -52,6 +52,11 @@ public class BulletScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            //------ [Ryan Edit Start] ------//
+            //to return isHit bool to UI Manager
+            collision.gameObject.GetComponent<IsHitScript>().IsHit = true;
+            //------ [Ryan Edit End] ------//
+
             Destroy(collision.gameObject);
             //Made by Kyle. To destroy bullet
             Destroy(this.gameObject);

@@ -70,6 +70,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4613977900150806}
+  - component: {fileID: 114254824164661482}
   m_Layer: 0
   m_Name: PlayerTank
   m_TagString: Player
@@ -483,6 +484,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114254824164661482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1499901473676264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21168e1e955517449a2df6b1b505d181, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114885502533756046
 MonoBehaviour:
   m_ObjectHideFlags: 1

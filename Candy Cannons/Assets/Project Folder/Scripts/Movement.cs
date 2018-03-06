@@ -114,6 +114,11 @@ public class Movement : MonoBehaviour
     {
         if (other.tag == "Projectile")
         {
+            //------ [Ryan Edit Start] ------//
+            //to return isHit bool to UI Manager
+            gameObject.GetComponent<IsHitScript>().IsHit = true;
+            //------ [Ryan Edit End] ------//
+
             gameObject.SetActive(false);
         }
     }

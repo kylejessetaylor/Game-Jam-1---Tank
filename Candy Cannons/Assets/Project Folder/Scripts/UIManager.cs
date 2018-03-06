@@ -24,9 +24,18 @@ public enum currOption_Next
     EXIT
 }
 
+public enum gameState
+{
+    MAIN = 0,
+    INGAME,
+    PAUSE,
+    NEXT
+}
+
 public class UIManager : MonoBehaviour
 {
     List<GameObject> uiObjects;
+    Manager GM;
 
     //------ Main Menu Sprites ------// 
     //assign start sprite
@@ -81,6 +90,7 @@ public class UIManager : MonoBehaviour
     {
         //Load all UI Objects in Scene
         loadUIObjects();
+        GM = GameObject.Find("GameManager").GetComponent<Manager>();
 
         //------ Load Main Menu Sprites from Resource ------// 
         startSpriteList_MainMenu = Resources.LoadAll<Sprite>("StartSprites_MainMenu");
@@ -133,10 +143,10 @@ public class UIManager : MonoBehaviour
         currPointing_Next = currOption_Next.NEXT;
 
         //------ All UI Elements Loaded, turn off IngameUI and PauseUI ------//
-        uiObjects[0].SetActive(true);
-        uiObjects[1].SetActive(false);
-        uiObjects[2].SetActive(false);
-        uiObjects[3].SetActive(false);
+        uiObjects[0].SetActive(true);   //main menu
+        uiObjects[1].SetActive(false);  //ingame
+        uiObjects[2].SetActive(false);  //pause
+        uiObjects[3].SetActive(false);  //next
 
     }
 
@@ -158,10 +168,7 @@ public class UIManager : MonoBehaviour
 
                 if (XCI.GetButtonDown(XboxButton.B, controller))
                 {
-                    uiObjects[0].SetActive(false);
-                    uiObjects[1].SetActive(true);
-                    uiObjects[2].SetActive(false);
-                    uiObjects[3].SetActive(false);
+                    switchGameState(gameState.INGAME);
                 }
             }
             else if (currPointing_MainMenu == currOption_MainMenu.EXIT)
@@ -184,27 +191,24 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1;
 
+            player1ScoreText.text = player1Score.ToString();
+            player2ScoreText.text = player2Score.ToString();
+
             if (XCI.GetButtonDown(XboxButton.Start, controller))
             {
-                Time.timeScale = 0;
-                uiObjects[0].SetActive(false);
-                uiObjects[1].SetActive(false);
-                uiObjects[2].SetActive(true);
-                uiObjects[3].SetActive(false);
+                switchGameState(gameState.PAUSE);
             }
         }
 
         if (uiObjects[2].activeInHierarchy) //if currently at PAUSE State
         {
+            Time.timeScale = 0;
+
             if (currPointing_Pause == currOption_Pause.RESUME)
             {
                 if (XCI.GetButtonDown(XboxButton.B, controller))
                 {
-                    Time.timeScale = 1;
-                    uiObjects[0].SetActive(false);
-                    uiObjects[1].SetActive(true);
-                    uiObjects[2].SetActive(false);
-                    uiObjects[3].SetActive(false);
+                    switchGameState(gameState.INGAME);
                 }
 
                 if (XCI.GetButtonDown(XboxButton.DPadUp, controller))
@@ -229,11 +233,7 @@ public class UIManager : MonoBehaviour
             {
                 if (XCI.GetButtonDown(XboxButton.B, controller))
                 {
-                    Time.timeScale = 0;
-                    uiObjects[0].SetActive(true);
-                    uiObjects[1].SetActive(false);
-                    uiObjects[2].SetActive(false);
-                    uiObjects[3].SetActive(false);
+                    switchGameState(gameState.MAIN);
                 }
 
                 if (XCI.GetButtonDown(XboxButton.DPadUp, controller))
@@ -279,17 +279,14 @@ public class UIManager : MonoBehaviour
 
         if (uiObjects[3].activeInHierarchy) //if currently at In NEXT State
         {
+            Time.timeScale = 0;
+
             if (currPointing_Next == currOption_Next.NEXT)
             {
                 if (XCI.GetButtonDown(XboxButton.B, controller))
                 {
-                    Time.timeScale = 1;
-                    uiObjects[0].SetActive(false);
-                    uiObjects[1].SetActive(true);
-                    uiObjects[2].SetActive(false);
-                    uiObjects[3].SetActive(false);
-                    //turn off current map
-                    //launch next map
+                    switchGameState(gameState.INGAME);
+                    GM.refreshStage();
                 }
 
                 if (XCI.GetButtonDown(XboxButton.DPadUp, controller))
@@ -314,11 +311,7 @@ public class UIManager : MonoBehaviour
             {
                 if (XCI.GetButtonDown(XboxButton.B, controller))
                 {
-                    Time.timeScale = 0;
-                    uiObjects[0].SetActive(true);
-                    uiObjects[1].SetActive(false);
-                    uiObjects[2].SetActive(false);
-                    uiObjects[3].SetActive(false);
+                    switchGameState(gameState.MAIN);
                 }
 
                 if (XCI.GetButtonDown(XboxButton.DPadUp, controller))
@@ -376,6 +369,41 @@ public class UIManager : MonoBehaviour
         uiObjects.Add(nextUI);
     }
 
+    public void switchGameState(gameState state)
+    {
+        if (state == gameState.MAIN)
+        {
+            uiObjects[0].SetActive(true);    //main menu
+            uiObjects[1].SetActive(false);   //ingame
+            uiObjects[2].SetActive(false);   //pause
+            uiObjects[3].SetActive(false);   //next
+        }
+
+        if (state == gameState.INGAME)
+        {
+            uiObjects[0].SetActive(false);   //main menu
+            uiObjects[1].SetActive(true);    //ingame
+            uiObjects[2].SetActive(false);   //pause
+            uiObjects[3].SetActive(false);   //next
+        }
+
+        if (state == gameState.PAUSE)
+        {
+            uiObjects[0].SetActive(false);   //main menu
+            uiObjects[1].SetActive(false);   //ingame
+            uiObjects[2].SetActive(true);    //pause
+            uiObjects[3].SetActive(false);   //next
+        }
+
+        if (state == gameState.NEXT)
+        {
+            uiObjects[0].SetActive(false);   //main menu
+            uiObjects[1].SetActive(false);   //ingame
+            uiObjects[2].SetActive(false);   //pause
+            uiObjects[3].SetActive(true);    //next
+        }
+    }
+
     //Getter & Setter for both player's scores
     public int Player1Score
     {
@@ -387,11 +415,5 @@ public class UIManager : MonoBehaviour
     {
         get { return player2Score; }
         set { player2Score = value; }
-    }
-
-    public List<GameObject> UIObjects
-    {
-        get { return uiObjects; }
-        set { uiObjects = value; }
     }
 }
