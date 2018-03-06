@@ -14,6 +14,8 @@ public class Manager : MonoBehaviour
 
     #endregion
 
+    public GameObject playerTank1;
+
 // Use this for initialization
 void Start()
     {
