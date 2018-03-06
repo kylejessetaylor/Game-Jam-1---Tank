@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Mine : MonoBehaviour {
 
+    //Explosion Audio
+    public AudioClip mineExplosion;
+
     //Whipped Cream
     public GameObject projectile;
 
@@ -75,6 +78,11 @@ public class Mine : MonoBehaviour {
     {
         //suspend execution for X seconds
         yield return new WaitForSeconds(time);
+
+        //Audio
+        AudioSource.PlayClipAtPoint(mineExplosion, transform.position);
+
+        //Projectiles
         projectile.transform.position = thisObject.transform.position;
         projectile.transform.parent = null;
         projectile.SetActive(true);

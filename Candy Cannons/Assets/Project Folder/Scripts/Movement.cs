@@ -4,6 +4,7 @@ using UnityEngine;
 using XboxCtrlrInput;
 public class Movement : MonoBehaviour
 {
+    public AudioClip deathSound;
 
     public float velocity = 0;
     public float maxSpeed = 10.0f;
@@ -118,6 +119,9 @@ public class Movement : MonoBehaviour
             //to return isHit bool to UI Manager
             gameObject.GetComponent<IsHitScript>().IsHit = true;
             //------ [Ryan Edit End] ------//
+
+            //Audio
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
 
             gameObject.SetActive(false);
         }

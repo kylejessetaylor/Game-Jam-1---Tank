@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    public AudioClip deathSound;
+    public AudioClip bounceSound;
+
     public LayerMask collisionMask;
    [SerializeField] private GameObject CanonRotation;
     public GameObject player;
@@ -70,6 +73,9 @@ public class BulletScript : MonoBehaviour
 
     void Destroy()
     {
+        //Audio
+        AudioSource.PlayClipAtPoint(deathSound, transform.position);
+
         gameObject.SetActive(false);
     }
 }
