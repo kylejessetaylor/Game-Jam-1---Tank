@@ -11,7 +11,7 @@ public class CanonRot : MonoBehaviour
     public GameObject shell;
     public Transform fireTransform;
     public float turretHeight;
-    private bool fired = false;
+    private bool fired;
     private float time;
     public GameObject movPos;
     [SerializeField]private int amountOfBullets;
@@ -30,10 +30,24 @@ public class CanonRot : MonoBehaviour
         }
     }
 
+    public bool Fired
+    {
+        get
+        {
+            return fired;
+        }
+
+        set
+        {
+            fired = value;
+        }
+    }
+
 
     // Use this for initialization
     void Awake ()
     {
+        Fired = false;
         shells = new List<GameObject>();
 
         for (int i  = 0; i < amountOfBullets; i++)
@@ -66,7 +80,7 @@ public class CanonRot : MonoBehaviour
             }
             else
             {
-                fired = false;
+                Fired = false;
             }
         }
 
@@ -93,14 +107,14 @@ public class CanonRot : MonoBehaviour
 
     private void ShootBullet()
     {
-        fired = true;
+        Fired = true;
 
         for (int i = 0; i < shells.Count; i++)
         {
             if(!shells[i].activeInHierarchy)
             {
-                shells[i].transform.position = transform.position;
-                shells[i].transform.rotation = transform.rotation;
+                shells[i].transform.position = fireTransform.position;
+                shells[i].transform.rotation = fireTransform.rotation;
                 shells[i].SetActive(true);
                 break;
             }
