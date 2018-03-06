@@ -14,7 +14,7 @@ public class CanonRot : MonoBehaviour
     private bool fired = false;
     private float time;
     public GameObject movPos;
-    private int amountOfBullets = 20;
+    [SerializeField]private int amountOfBullets;
     public List<GameObject> shells;
     public float launchForce = 10.0f;
     public float shellDelay;
