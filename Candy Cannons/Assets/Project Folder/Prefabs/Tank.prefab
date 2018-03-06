@@ -52,7 +52,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4597335634274038}
   - component: {fileID: 33187849750116786}
-  - component: {fileID: 65180604667894120}
   - component: {fileID: 23325913531334208}
   - component: {fileID: 54049304896772354}
   - component: {fileID: 114092992366602130}
@@ -89,9 +88,9 @@ GameObject:
   - component: {fileID: 4031876109114304}
   - component: {fileID: 33494897408586860}
   - component: {fileID: 65086555983913834}
+  - component: {fileID: 54626589907684322}
   - component: {fileID: 23994357480887288}
   - component: {fileID: 114862468251263134}
-  - component: {fileID: 54626589907684322}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -146,15 +145,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1100135369770548}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.869, y: 0, z: -6.56}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000006556511}
+  m_LocalPosition: {x: -3.9930005, y: 0, z: 6.2870007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4031876109114304}
   - {fileID: 4597335634274038}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
 --- !u!4 &4975243496522086
 Transform:
   m_ObjectHideFlags: 1
@@ -305,7 +304,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!54 &54626589907684322
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -319,8 +318,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
-  m_CollisionDetection: 0
+  m_Constraints: 116
+  m_CollisionDetection: 2
 --- !u!65 &65086555983913834
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -331,19 +330,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &65180604667894120
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1795062976120442}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114092992366602130
 MonoBehaviour:
@@ -375,7 +362,8 @@ MonoBehaviour:
   rotSpeed: 50
   shell: {fileID: 54836240489041484, guid: 05a2dec5af83e6647864f6dab6641ccd, type: 2}
   fireTransform: {fileID: 4205406508894662}
-  turretHeight: 0
+  turretHeight: 0.5
+  Shells: []
   launchForce: 10
   time: 0
   movPos: {fileID: 1795062976120442}
@@ -389,5 +377,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.58
+  m_Center: {x: 0, y: 0.4, z: 0}
