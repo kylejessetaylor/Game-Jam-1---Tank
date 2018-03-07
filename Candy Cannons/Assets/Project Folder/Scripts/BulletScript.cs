@@ -64,9 +64,10 @@ public class BulletScript : MonoBehaviour
             //------ [Ryan Edit Start] ------//
             //to return isHit bool to UI Manager
             collision.gameObject.GetComponent<IsHitScript>().IsHit = true;
+
             //------ [Ryan Edit End] ------//
 
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             //Made by Kyle. To destroy bullet
 			AudioSource.PlayClipAtPoint(deathSound, transform.position);
 			gameObject.SetActive(false);
