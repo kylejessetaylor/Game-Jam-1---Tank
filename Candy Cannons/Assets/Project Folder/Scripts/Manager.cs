@@ -7,20 +7,18 @@ public class Manager : MonoBehaviour
 {
     private GameObject tank1;
     private GameObject tank2;
-    private List<GameObject> mapObjList;
+    public List<GameObject> mapObjList;
     private int currMapIndex;
     private UIManager uiManager;
+    private GameObject currMap;
 
 // Use this for initialization
     void Start()
     {
         uiManager = GameObject.Find("Canvas").GetComponent<UIManager>();
-        mapObjList = GameObject.FindGameObjectsWithTag("Map").ToList();
-        mapObjList[0].SetActive(true);
-        for (int i = 1; i < mapObjList.Count; i++)
-        {
-            mapObjList[i].SetActive(false);
-        }
+        currMap =  Instantiate(mapObjList[0]);
+        currMap.SetActive(true);
+
         currMapIndex = 0;
 
         tank1 = GameObject.Find("PlayerTank1");
@@ -30,16 +28,19 @@ public class Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (tank1.GetComponent<IsHitScript>().IsHit == true || tank2.GetComponent<IsHitScript>().IsHit ==)
+        if (tank1.GetComponent<IsHitScript>().IsHit || tank2.GetComponent<IsHitScript>().IsHit)
         {
             if (tank1.GetComponent<IsHitScript>().IsHit)
             {
                 uiManager.Player2Score++;
+                tank1.GetComponent<IsHitScript>().IsHit = false;
+
             }
 
             if (tank2.GetComponent<IsHitScript>().IsHit)
             {
                 uiManager.Player1Score++;
+                tank2.GetComponent<IsHitScript>().IsHit = false;
             }
 
             uiManager.switchGameState(gameState.NEXT);
@@ -48,11 +49,24 @@ public class Manager : MonoBehaviour
 
     public void refreshStage()
     {
-        mapObjList[currMapIndex].SetActive(false);
+        currMap.SetActive(false);
         currMapIndex = Random.Range(0, mapObjList.Count-1);
-        mapObjList[currMapIndex].SetActive(true);
+        currMap = Instantiate(mapObjList[currMapIndex]);
+        currMap.SetActive(true);
+
         tank1 = GameObject.Find("PlayerTank1");
         tank2 = GameObject.Find("PlayerTank2");
+        //Turns off Mine projectiles
+        List<GameObject> mine = GameObject.FindGameObjectsWithTag("Projectile").ToList();
+
+        for (int i = 0; i < mine.Count; i++)
+        {
+            mine[i].SetActive(false);
+        }
+
+        tank1.transform.position = new Vector3(tank1.transform.position.x, 0, tank1.transform.position.z);
+        tank2.transform.position = new Vector3(tank2.transform.position.x, 0, tank2.transform.position.z);
+
     }
 
     public int CurrMapIndex
